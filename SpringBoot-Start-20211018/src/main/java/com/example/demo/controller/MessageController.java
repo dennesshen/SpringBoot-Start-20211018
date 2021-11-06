@@ -18,8 +18,6 @@ public class MessageController {
 		model.addAttribute("scores",scores);
 		return "message";
 	}
-	public void name() {
-		
-	}
+	
 	
 }

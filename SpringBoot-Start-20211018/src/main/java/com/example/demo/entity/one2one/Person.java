@@ -7,12 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "husband")
-public class Husband {
+@Table(name = "person")
+public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -21,8 +22,11 @@ public class Husband {
 	private String name;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Dear_id")
-	private Wife wife;
+	@JoinColumns({
+		@JoinColumn(name = "card_id", referencedColumnName = "id"),
+		@JoinColumn(name = "card_num", referencedColumnName = "name")
+	})
+	private Card card;
 
 	public Long getId() {
 		return id;
@@ -40,18 +44,15 @@ public class Husband {
 		this.name = name;
 	}
 
-	public Wife getWife() {
-		return wife;
+	public Card getCard() {
+		return card;
 	}
 
-	public void setWife(Wife wife) {
-		this.wife = wife;
+	public void setCard(Card card) {
+		this.card = card;
 	}
-
-	@Override
-	public String toString() {
-		return "Husband [id=" + id + ", name=" + name + ", wife=" + (wife==null?"":wife.getName()) + "]";
-	}
-
 	
+	
+	
+
 }
