@@ -21,7 +21,6 @@ public class Husband {
 	private String name;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Dear_id")
 	private Wife wife;
 
 	public Long getId() {
